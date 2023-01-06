@@ -21,12 +21,13 @@ const postsSlice = createSlice({
 			reducer(state, action) {
 				state.push(action.payload) // this doesn't mutate the array since RTK uses emmerJS
 			},
-			prepare(title, content) {
+			prepare(title, content, userId) {
 				return {
 					payload: {
 						id: nanoid(),
 						title,
 						content,
+						userId,
 					},
 				}
 			},

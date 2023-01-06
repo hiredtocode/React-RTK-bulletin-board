@@ -1,8 +1,7 @@
-import { nanoid } from '@reduxjs/toolkit'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Section } from '../../styles/global.styled'
-import { postAdded } from './postsSlice'
+import { addPost } from './postsSlice'
 
 const AddPostForm = () => {
 	const dispatch = useDispatch()
@@ -15,13 +14,9 @@ const AddPostForm = () => {
 
 	const onSavePostClicked = () => {
 		if (title && content) {
-			dispatch(
-				postAdded({
-					id: nanoid(),
-					title,
-					content,
-				})
-			)
+			dispatch(addPost(title, content))
+			setTitle('')
+			setContent('')
 		}
 	}
 
